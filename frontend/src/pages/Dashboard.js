@@ -18,7 +18,7 @@ function Dashboard() {
   //  CREATE TASK
   const addTask = async () => {
     try {
-      await API.post("/tasks", { title: task });
+      await API.post("/tasks/create", { title: task });
       setTask("");
       getTasks();
     } catch (err) {

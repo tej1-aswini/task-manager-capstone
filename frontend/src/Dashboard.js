@@ -8,7 +8,7 @@ function Dashboard() {
   // GET TASKS
   const getTasks = async () => {
     try {
-      const res = await API.get("/tasks");
+      const res = await API.get("/tasks/create", { title: task});
       setTasks(res.data);
     } catch (err) {
       console.log(err);

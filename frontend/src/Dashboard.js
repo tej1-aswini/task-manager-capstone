@@ -21,7 +21,7 @@ function Dashboard() {
 
     try {
        const res = await API.post("/tasks/create", { title: task });
-       console.log("SUCCESS:", res.data);
+       console.log(res.data);
       setTask("");
       getTasks();
     } catch (err) {

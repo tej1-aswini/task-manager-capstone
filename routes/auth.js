@@ -7,44 +7,43 @@ const bcrypt = require("bcryptjs");
 // REGISTER
 router.post("/register", async (req, res) => {
     try {
-        console.log("REGISTER HIT");
+    const { username, password } = req.body;
 
-        const user = new User({
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password
-        });
+    const hashedPassword = await
+    bcrypt.hash(password, 10);
+    const user = new User({
+        name: username,
+        password: hashedPassword
+    });
 
-        await user.save();
+    await user.save();
 
-        res.json({ message: "User saved in DB" });
+    res.json({ message: "User registered" });
+}   catch (err) {
+    console.log(err);
+    res.status(500).json({ message:
+        err.message });
+}
 
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: err.message });
-    }
 });
 
-//login
+//login 
 router.post("/login", async (req, res) => {
-    const { email, password } = req.body;
-    const user = await
-    User.findOne({email });
+    const { username, password } = req.body;
 
+    const user = await User.findOne({ name: username });
+    
     if (!user) {
-        return res.status(400).json({ message:"User not found"});
+        return res.status(400).json({ message: "User not found" });
     }
-    const isMatch = await
-    bcrypt.compare(password, user.password);
-    if(!isMatch) {
-        return res.status(400).json({message:"Invalid password"});
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+        return res.status(400).json({ message: "Invalid password" });
     }
-    const token = jwt.sign(
-        { id: user.id},
-        process.env.JWT_SECRET,
-        { expiresIn: "1h"}
-    );
-    res.json({ message: "Login successful",token});
+
+    res.json({ message: "Login successful" });
 });
 
 // middleware

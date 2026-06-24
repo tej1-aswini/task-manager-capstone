@@ -1,34 +1,32 @@
-require("dotenv").config();
-
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
-
-const authRoutes = require("./routes/auth");
-const taskRoutes = require("./routes/taskRoutes");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
-app.use("/api/tasks", taskRoutes);
+// MongoDB Connection
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log("MongoDB error:", err));
 
+// Routes
+app.use("/api", require("./routes/auth"));
+app.use("/api/tasks", require("./routes/taskRoutes"));
+
+// Default route (optional test)
 app.get("/", (req, res) => {
-    res.send("Task Manager API Running");
+  res.send("Backend is running");
 });
 
-mongoose.connect(process.env.DATABASE_URL)
-.then(() => {
-    console.log("MongoDB Connected");
-})
-.catch((err) => {
-    console.log(err);
-});
-
-const PORT = process.env.PORT || 3000;
+// PORT
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

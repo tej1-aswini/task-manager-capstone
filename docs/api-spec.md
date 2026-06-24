@@ -1,5 +1,8 @@
-API Specification
+API Specification - task manager capstone
+## Base URL
+http://localhost:3001/api
 
+# authentication routes
 Register User
 
 POST /api/auth/register
@@ -66,3 +69,23 @@ Response:
 "description": "Complete internship task"
 }
 ]
+
+update tasks
+
+PUT /tasks/:id
+Authorization: Bearer <token>
+
+{
+    "title": "updated task",
+    "description": "updated",
+    "completed": "true"
+}
+
+delete tasks
+
+DELETE /tasks/:id
+Authorization: Bearer <token>
+
+{
+    "message": "Task deleted successfully"
+    }

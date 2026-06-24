@@ -8,7 +8,7 @@ function Dashboard() {
   // GET TASKS
   const getTasks = async () => {
     try {
-      const res = await API.get("/tasks/create", { title: task});
+      const res = await API.get("/tasks");
       setTasks(res.data);
     } catch (err) {
       console.log(err);
@@ -26,7 +26,7 @@ function Dashboard() {
       getTasks();
     } catch (err) {
       console.log("ERROR RESPONSE:", err.response);
-      console.log("ERROR DATA:", error.response?.data);
+      console.log("ERROR DATA:", err.response?.data);
       console.log("STATUS", err.response?.status);
       console.log("MESSAGE:", err.message);
       alert("Error adding task");

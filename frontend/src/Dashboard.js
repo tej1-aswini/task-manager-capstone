@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import API from "./services/api";
 
+console.log("DASHBOARD VERSION JUNE 24");
+
 function Dashboard() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);

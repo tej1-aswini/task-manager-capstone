@@ -7,8 +7,8 @@ router.post("/create", async (req, res) => {
     try {
         const task = new Task({
             title: req.body.title,
-            description: req.body.description,
-            user: req.body.userId
+            description: req.body.description || "",
+            user: req.body.userId || null
         });
 
         await task.save();
@@ -18,6 +18,7 @@ router.post("/create", async (req, res) => {
             task
         });
     } catch (error) {
+        console.log(error);
         res.status(500).json({
             message: error.message
         });
@@ -27,7 +28,7 @@ router.post("/create", async (req, res) => {
 // Get Tasks for a specific user
 router.get("/", async (req, res) => {
     try {
-        const tasks = await Task.find({ user: req.query.userId });
+        const tasks = await Task.find();
         res.json(tasks);
     } catch (error) {
         res.status(500).json({

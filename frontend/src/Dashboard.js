@@ -25,7 +25,7 @@ function Dashboard() {
       setTask("");
       getTasks();
     } catch (err) {
-      console.log(err);
+      console.log(err.response?.data || err.message);
       alert("Error adding task");
     }
   };

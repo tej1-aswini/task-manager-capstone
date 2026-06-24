@@ -8,7 +8,7 @@ router.post("/create", async (req, res) => {
         const task = new Task({
             title: req.body.title,
             description: req.body.description || "",
-            user: req.body.userId || null
+            user: null
         });
 
         await task.save();

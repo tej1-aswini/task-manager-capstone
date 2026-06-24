@@ -1,146 +1,195 @@
+Task Manager Capstone Project
 
-# Task Manager Capstone Project
+Project Overview
 
-##  Project Overview
-This is a full-stack Task Manager web application built using MERN stack.
+This is a full-stack Task Manager web application built using the MERN Stack (MongoDB, Express.js, React.js, and Node.js).
 
-Users can:
-- Register & Login
-- Get JWT authentication
-- Create personal tasks
-- View their tasks
+The application allows users to:
+
+- Register a new account
+- Login securely
+- Authenticate using JWT
+- Create tasks
+- View tasks
 - Delete tasks
-- Access protected routes securely
+- Manage tasks through a simple dashboard
 
 ---
 
-##  Features
+Features
 
-- User Registration & Login
+- User Registration
+- User Login
 - JWT Authentication
-- Password Hashing (bcrypt)
+- Password Hashing using bcrypt
 - Create Tasks
-- View User-specific Tasks
+- View Tasks
 - Delete Tasks
-- Protected Backend Routes
-- React Dashboard UI
+- MongoDB Integration
+- REST API Development
+- React Dashboard Interface
 
 ---
 
-##  Tech Stack
+Tech Stack
 
-- Frontend: React.js
-- Backend: Node.js, Express.js
-- Database: MongoDB
-- Authentication: JWT
-- ORM: Mongoose
-- API Calls: Axios
+Frontend
+- React.js
+- Axios
+
+Backend
+- Node.js
+- Express.js
+
+Database
+- MongoDB
+- Mongoose
+
+Authentication
+- JSON Web Token (JWT)
+- bcryptjs
+
+Deployment
+- Vercel (Frontend)
+- Render (Backend)
 
 ---
 
-##  Project Structure
+Project Structure
 
 task-manager-capstone/
-│
-├── backend/
-│   ├── models/
-│   │   ├── User.js
-│   │   └── Task.js
-│   ├── routes/
-│   │   ├── authRoutes.js
-│   │   └── taskRoutes.js
-│   ├── middleware/
-│   │   └── auth.js
-│   ├── server.js
-│
 ├── frontend/
 │   ├── src/
-│   │   ├── pages/
-│   │   │   ├── Login.js
-│   │   │   ├── Register.js
-│   │   │   └── Dashboard.js
-│   │   ├── services/
-│   │   │   └── api.js
-│   │   ├── App.js
-│   │   └── index.js
+│   │   ├── Dashboard.js
+│   │   ├── Login.js
+│   │   ├── Register.js
+│   │   └── services/
+│   │       └── api.js
+│
+├── models/
+│   ├── User.js
+│   └── Task.js
+│
+├── routes/
+│   ├── auth.js
+│   └── taskRoutes.js
+│
+├── middleware/
+├── docs/
+│   └── api-spec.md
 │
 ├── postman_screenshots/
-│
-├── README.md
+├── server.js
+├── package.json
+└── README.md
 
 ---
 
-##  Installation & Setup
+Installation & Setup
 
-### 1. Backend Setup
-```bash
-cd backend
+1. Clone the Repository
+git clone https://github.com/tej1-aswini/task-manager-capstone.git
+
+2. Install Dependencies
 npm install
+
+3. Configure Environment Variables
+
+Create a ".env" file and add:
+JWT_SECRET=mysecretkey123
+MONGO_URI=mongodb://chennamsettitejaswini5_db_user:wc3kAsqOa3seOIOZ@ac-ltkvt32-shard-00-00.qq0dlwz.mongodb.net:27017,ac-ltkvt32-shard-00-01.qq0dlwz.mongodb.net:27017,ac-ltkvt32-shard-00-02.qq0dlwz.mongodb.net:27017/test?ssl=true&replicaSet=atlas-d0z5fy-shard-0&authSource=admin&retryWrites=true&w=majority
+
+4. Run Backend Server
 npm start
 
-### 2. Frontend Setup
+5. Run Frontend
 cd frontend
 npm install
 npm start
 
-## 3. Environment Variables
+---
 
-Create a `.env` file in the backend folder and add:
+API Endpoints
 
-```bash
-JWT_SECRET=your_secret_key
-MONGO_URI=your_mongodb_connection_string
+Authentication
+
+Register User
+POST /api/register
+
+Login User
+POST /api/login
 
 ---
 
-# THEN NEXT SECTION
+Task Routes
 
-```md id="api1"
-## 4. API Endpoints
+Create Task
+POST /api/tasks/create
 
-### Auth Routes
-- POST /api/auth/register
-- POST /api/auth/login
+Get All Tasks
+GET /api/tasks
 
-### Task Routes (Protected)
-- GET /api/tasks
-- POST /api/tasks
-- PUT /api/tasks/:id
-- DELETE /api/tasks/:id
+Update Task
+PUT /api/tasks/:id
 
-## 5. Screenshots
+Delete Task
+DELETE /api/tasks/:id
 
-Add screenshots inside the folder:
+---
 
+Screenshots
+
+Screenshots are available inside the:
 postman_screenshots/
 
-Include:
+Included screenshots:
+
 - Register API
 - Login API
 - Create Task API
 - Get Tasks API
 
-## 6. How It Works
+---
 
-1. User registers → password hashed using bcrypt
-2. User logs in → JWT token generated
-3. Token stored in localStorage
-4. Token sent in API headers
-5. Backend verifies token
-6. User can manage only their own tasks
+How It Works
+
+1. User registers with a username and password.
+2. Password is hashed using bcrypt before storage.
+3. User logs in successfully.
+4. JWT token is generated for authentication.
+5. User can create, view, and delete tasks.
+6. Data is stored in MongoDB.
 
 ---
 
-## Author
+Live Deployment
 
-Capstone Project - Task Manager (Full Stack MERN)
+Frontend (Vercel)
+
+https://tas-manager-capstone-woad.vercel.app/
+
+Backend (Render)
+
+https://task-manager-capstone.onrender.com
+
+GitHub Repository
+
+https://github.com/tej1-aswini/task-manager-capstone
 
 ---
 
-## Status
+Challenges Faced
 
-✔ Backend Completed  
-✔ Frontend Completed  
-✔ Authentication Done  
-✔ CRUD Done  
-✔ Ready for Submission
+- Setting up frontend and backend deployment.
+- Connecting React frontend with Render backend.
+- Debugging API endpoint mismatches.
+- Resolving MongoDB schema validation errors.
+- Testing and verifying API functionality.
+
+---
+
+Author
+
+Ch.Tejaswini
+
+Task Manager Capstone Project

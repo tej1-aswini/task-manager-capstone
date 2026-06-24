@@ -25,7 +25,10 @@ function Dashboard() {
       setTask("");
       getTasks();
     } catch (err) {
-      console.log("ERROR RESPONSE:", err.response?.data || err.message);
+      console.log("ERROR RESPONSE:", err.response);
+      console.log("ERROR DATA:", error.response?.data);
+      console.log("STATUS", err.response?.status);
+      console.log("MESSAGE:", err.message);
       alert("Error adding task");
     }
   };

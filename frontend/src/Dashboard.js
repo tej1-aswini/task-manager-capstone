@@ -18,14 +18,14 @@ function Dashboard() {
 
   // ADD TASK
   const addTask = async () => {
-    if (!task) return;
 
     try {
-      await API.post("/tasks/create", { title: task });
+       const res = await API.post("/tasks/create", { title: task });
+       console.log("SUCCESS:", res.data);
       setTask("");
       getTasks();
     } catch (err) {
-      console.log(err.response?.data || err.message);
+      console.log("ERROR RESPONSE:", err.response?.data || err.message);
       alert("Error adding task");
     }
   };
